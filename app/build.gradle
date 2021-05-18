@@ -80,8 +80,7 @@ android {
         variant.outputs.each { output ->
             def newName
             def timeNow
-            //def oldFile = output.outputFile
-            //def outDirectory = oldFile.parent
+            def outDirectory
 
             if ("true".equals(IS_JENKINS)) {
                 timeNow = JENKINS_TIME
