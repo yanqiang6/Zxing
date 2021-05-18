@@ -84,21 +84,24 @@ android {
 
             if ("true".equals(IS_JENKINS)) {
                 timeNow = JENKINS_TIME
-                outDirectory = '/home/zsudo/yan/dev/apk'
-                newName = 'yj-android-v' +
-                        APP_VERSION + '-' + variant.productFlavors[0].name + timeNow + '-' + variant.buildType.name + '.apk'
+                outDirectory=BUILD_PATH_JENKINS
+                if ("debug".equals(variant.buildType.name)){
+                    newName = "AutoBuildTest-v${APP_VERSION}-debug.apk"
+                }else {
+                    newName = 'AutoBuildTest-v' +
+                            APP_VERSION + '-' + variant.productFlavors[0].name + timeNow + '-' + variant.buildType.name + '.apk'
+                }
             } else {
                 timeNow = getDate()
-                if (variant.buildType.name.equals('debug')) {
-                    newName = "yj-android-v${APP_VERSION}-debug.apk"
-                } else {
-                    newName = 'yj-android-v' +
+                outDirectory=BUILD_PATH_LOCAL
+                if ("debug".equals(variant.buildType.name)){
+                    newName = "AutoBuildTest-v${APP_VERSION}-debug.apk"
+                }else {
+                    newName = 'AutoBuildTest-v' +
                             APP_VERSION + '-' + variant.productFlavors[0].name + timeNow + '-' + variant.buildType.name + '.apk'
                 }
             }
-
-            //outputFile = new File(outDirectory, newName)
-            outputFileName = new File("../../../release/", newName)
+            outputFileName = new File(outDirectory, newName)
 
         }
     }
