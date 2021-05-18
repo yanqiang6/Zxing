@@ -85,7 +85,7 @@ android {
 
             if ("true".equals(IS_JENKINS)) {
                 timeNow = JENKINS_TIME
-                outDirectory = 'G:/Tomcat/webapps/jenkins/apk'
+                outDirectory = '/home/zsudo/yan/dev/apk'
                 newName = 'yj-android-v' +
                         APP_VERSION + '-' + variant.productFlavors[0].name + timeNow + '-' + variant.buildType.name + '.apk'
             } else {
